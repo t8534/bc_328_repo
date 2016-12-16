@@ -7,10 +7,12 @@
  * 
  */ 
 
-//#define F_CPU 16000000UL
-#define F_CPU 1000000UL
+#define F_CPU 8000000UL
+
 #include <avr/io.h>
 #include <util/delay.h>
+
+
 int main(void)
 {
 	DDRB |= (1<<DDB0); //Set the 6th bit on PORTB (i.e. PB5) to 1 => output

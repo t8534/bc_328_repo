@@ -66,9 +66,9 @@ Disassembly of section .text:
 00000080 <main>:
   80:	20 9a       	sbi	0x04, 0	; 4
   82:	28 9a       	sbi	0x05, 0	; 5
-  84:	2f e3       	ldi	r18, 0x3F	; 63
-  86:	8d e0       	ldi	r24, 0x0D	; 13
-  88:	93 e0       	ldi	r25, 0x03	; 3
+  84:	2f ef       	ldi	r18, 0xFF	; 255
+  86:	89 e6       	ldi	r24, 0x69	; 105
+  88:	98 e1       	ldi	r25, 0x18	; 24
   8a:	21 50       	subi	r18, 0x01	; 1
   8c:	80 40       	sbci	r24, 0x00	; 0
   8e:	90 40       	sbci	r25, 0x00	; 0
@@ -76,9 +76,9 @@ Disassembly of section .text:
   92:	00 c0       	rjmp	.+0      	; 0x94 <main+0x14>
   94:	00 00       	nop
   96:	28 98       	cbi	0x05, 0	; 5
-  98:	2f e3       	ldi	r18, 0x3F	; 63
-  9a:	8d e0       	ldi	r24, 0x0D	; 13
-  9c:	93 e0       	ldi	r25, 0x03	; 3
+  98:	2f ef       	ldi	r18, 0xFF	; 255
+  9a:	89 e6       	ldi	r24, 0x69	; 105
+  9c:	98 e1       	ldi	r25, 0x18	; 24
   9e:	21 50       	subi	r18, 0x01	; 1
   a0:	80 40       	sbci	r24, 0x00	; 0
   a2:	90 40       	sbci	r25, 0x00	; 0
