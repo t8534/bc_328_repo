@@ -15,14 +15,13 @@
 
 
 
-
 int main(void)
 {
 	
 	
 	// USART ISR example - OK
-	// Set the baudrate to 9600 bps using 8MHz internal RC oscillator 
-	USART1_Init(UBRR_VAL);  //todo: we have 8 MHz external osc
+	// Set the baudrate to 9600 bps, external 8MHz oscillator.
+	USART1_Init(UBRR_VAL);  
 	sei();
 	
 	DDRB |= (1<<DDB0); // LED
