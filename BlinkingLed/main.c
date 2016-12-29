@@ -1,6 +1,9 @@
 /*
  * Base Core Atmega328
  *
+ * DHT22 driver.
+ * Humidity/temperature sensor.
+ *
  * Author : arek
  *
  * 

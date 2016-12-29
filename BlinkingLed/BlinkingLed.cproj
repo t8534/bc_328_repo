@@ -124,6 +124,18 @@
     <Compile Include="dbg.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="dht22.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="dht22.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="dht22isr.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="dht22isr.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
