@@ -2,7 +2,7 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-main.c
+dbg.c
 
-usart_isr.c
+main.c
 

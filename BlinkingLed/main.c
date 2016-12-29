@@ -1,7 +1,6 @@
 /*
- * BlinkingLed.c
+ * Base Core Atmega328
  *
- * Created: 2016-12-07 19:57:25
  * Author : arek
  *
  * 
@@ -10,65 +9,36 @@
 #define F_CPU 8000000UL
 
 #include <avr/io.h>
-//#include <util/delay.h>
-#include "usart_isr.h"
-
+#include <util/delay.h>
+#include "dbg.h"
 
 
 
 int main(void)
 {
-	
-	
-	// USART ISR example - OK
-	// Set the baudrate to 9600 bps using 8MHz internal RC oscillator 
-	USART1_Init(UBRR_VAL);  //todo: we have 8 MHz external osc
-	sei();
-	
-	DDRB |= (1<<DDB0); // LED
-	PORTB |= (1<<PORTB0);
-	
-	for( ; ; ) {
-		// Echo the received character 
-		USART1_Transmit(USART1_Receive());
-	}	
-	
-	
-	// USART pooling - OK
-	// Set the baud rate: 9600 -> UBRRn = 51
-	/*
-	unsigned char ubrr_v = 51;
-	unsigned char data = 66;  // B - 0x42
-	UBRR0H = (unsigned char) (ubrr_v>>8);
-	UBRR0L = (unsigned char) ubrr_v;
-    UCSR0B = ((1 << RXEN0) | (1 << TXEN0));
-	UCSR0C = ((1 << UCSZ01) | (1 << UCSZ00));  // 9600 8 N 1 
+	const char *msg1 = "The value of val = ";	
+	const char *msg_crlf= "\r\n";	
+	uint32_t val = 0;
+
+	DBG_PINS_INIT;
+	DBG_UartInit()	;
 	while(1)
 	{
-		PORTB |= (1<<PORTB0);
+		PORTB |= (1<<PORTB0);  // LED
+		DBG_PIN0_TOGGLE;
+		DBG_PIN1_TOGGLE;
+		DBG_PIN2_TOGGLE;
+		
 		_delay_ms(500);
 		
-		// Wait for empty transmit buffer 
-		while (!(UCSR0A & (1<<UDRE0)));
-	
-		// Start transmission 
-		UDR0 = data;
+		DBG_UartPrintStr(msg1);
+		DBG_UartPrintDec(DBG_DecMsgBuff, DBG_DEC_MSG_BUFF_LEN, val);
+		DBG_UartPrintStr(msg_crlf);
 		
 		PORTB &= ~(1<<PORTB0);
 		_delay_ms(500);
-	
+		
+		if (val < 99999999) val++;
 	}
-	*/
 	
-	// Blinky Led example
-	/*
-	DDRB |= (1<<DDB0); //Set the 6th bit on PORTB (i.e. PB5) to 1 => output
-	while(1)
-	{
-		PORTB |= (1<<PORTB0);    //Turn 6th bit on PORTB (i.e. PB5) to 1 => on
-		_delay_ms(1000);         //Delay for 1000ms => 1 sec
-		PORTB &= ~(1<<PORTB0);   //Turn 6th bit on PORTB (i.e. PB5) to 0 => off
-		_delay_ms(1000);         //Delay for 1000ms => 1 sec
-	}
-	*/
 }

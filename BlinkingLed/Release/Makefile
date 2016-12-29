@@ -37,8 +37,8 @@ SUBDIRS :=
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../main.c \
-../usart_isr.c
+../dbg.c \
+../main.c
 
 
 PREPROCESSING_SRCS += 
@@ -48,20 +48,20 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-main.o \
-usart_isr.o
+dbg.o \
+main.o
 
 OBJS_AS_ARGS +=  \
-main.o \
-usart_isr.o
+dbg.o \
+main.o
 
 C_DEPS +=  \
-main.d \
-usart_isr.d
+dbg.d \
+main.d
 
 C_DEPS_AS_ARGS +=  \
-main.d \
-usart_isr.d
+dbg.d \
+main.d
 
 OUTPUT_FILE_PATH +=BlinkingLed.elf
 

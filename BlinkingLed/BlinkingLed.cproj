@@ -118,13 +118,13 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="dbg.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="dbg.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="usart_isr.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="usart_isr.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
