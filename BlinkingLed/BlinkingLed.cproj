@@ -124,9 +124,68 @@
     <Compile Include="dbg.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="hardware\delay\delay.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hardware\delay\delay.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hardware\iic\IIC.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hardware\iic\IIC.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hardware\spi\SPI.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hardware\spi\SPI.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hardware\ssd1306\Fonts.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hardware\ssd1306\Fonts.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hardware\ssd1306\SSD1306.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hardware\ssd1306\SSD1306.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="ssd1306.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ssd1306.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="user\Config.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="user\Config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="user\LIB_Config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="user\MacroAndConst.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="user\main.c">
+      <SubType>compile</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="hardware" />
+    <Folder Include="hardware\delay" />
+    <Folder Include="hardware\iic" />
+    <Folder Include="hardware\ssd1306" />
+    <Folder Include="hardware\spi" />
+    <Folder Include="user" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>
