@@ -124,7 +124,22 @@
     <Compile Include="dbg.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="defs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="i2c.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="mlx90614.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="mlx90614.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="types.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
