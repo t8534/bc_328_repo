@@ -4,5 +4,9 @@
 
 dbg.c
 
+dht22.c
+
+dht22isr.c
+
 main.c
 

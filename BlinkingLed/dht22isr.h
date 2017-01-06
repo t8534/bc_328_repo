@@ -45,6 +45,9 @@
 #ifndef DHT22ISR_H_
 #define DHT22ISR_H_
 
+#include <avr/io.h>
+#include <avr/interrupt.h>
+
 
 /* Driver Configuration */
 #define OVERFLOWS_HOST_START 2 // How many times a timer overflow is used to generate Period P1.

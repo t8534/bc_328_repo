@@ -9,8 +9,9 @@
 #ifndef DHT22_H_
 #define DHT22_H_
 
+#if 0
 uint8_t DHT22_read(uint8_t sensor, _DHT22_data* data);
-
+#endif
 
 
 #endif /* DHT22_H_ */

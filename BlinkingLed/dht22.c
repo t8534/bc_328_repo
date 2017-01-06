@@ -1,9 +1,14 @@
 /*
  * dht22.c
+ * 
+ * No isr version
  *
  * Created: 2016-12-29 22:38:40
  *  Author: arek
  */ 
+
+
+#if 0
 
 #include "dht22.h"
 
@@ -111,3 +116,5 @@
     	
     	return 0;
     }
+
+#endif

@@ -6,6 +6,7 @@
  *
  * Author : arek
  *
+ * The Data Pin for DHT22: PD2
  * 
  */ 
 
@@ -14,17 +15,56 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include "dbg.h"
+#include "dht22isr.h"
 
 
 
 int main(void)
 {
-	const char *msg1 = "The value of val = ";	
 	const char *msg_crlf= "\r\n";	
-	uint32_t val = 0;
+	const char *msg_dht22_checksum = "DHT22 checksum error";
+	const char *msg_dht22_noresp = "DHT22 not respond";
+	//uint32_t val = 0;
+
+	DHT22_STATE_t state;
+	DHT22_DATA_t sensor_data;
+
 
 	DBG_PINS_INIT;
-	DBG_UartInit()	;
+	DBG_UartInit();
+	
+	DHT22_Init();
+	sei();
+	
+    while (1)
+	{
+		DBG_PIN0_TOGGLE;
+		state = DHT22_StartReading();
+        while (DHT_DATA_READY != state) 
+        {
+			if (DHT_ERROR_CHECKSUM == state)
+			{
+				DBG_UartPrintStr(msg_dht22_checksum);
+				DBG_UartPrintStr(msg_crlf);
+			}
+			else if (DHT_ERROR_NOT_RESPOND == state)
+			{
+				DBG_UartPrintStr(msg_dht22_noresp);
+				DBG_UartPrintStr(msg_crlf);
+			}
+			state = DHT22_CheckStatus(&sensor_data);
+        } 
+
+        // Do something with the data.
+        // sensor_data.temperature_integral
+        // sensor_data.temperature_decimal
+        // sensor_data.humidity_integral
+        // sensor_data.humidity_decimal
+		
+		_delay_ms(1000);
+	}
+	
+	/*
 	while(1)
 	{
 		PORTB |= (1<<PORTB0);  // LED
@@ -43,5 +83,5 @@ int main(void)
 		
 		if (val < 99999999) val++;
 	}
-	
+	*/
 }

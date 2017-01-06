@@ -95,10 +95,10 @@
  *             the timer.
  */ 
 
-#include <avr/io.h>
-#include <avr/interrupt.h>
+//#include <avr/io.h>
+//#include <avr/interrupt.h>
 
-#include "DHT22int.h"
+#include "dht22isr.h"
 
 /* Global variables for this file */
 DHT22_STATE_t state;
