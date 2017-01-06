@@ -24,7 +24,13 @@ int main(void)
 	const char *msg_crlf= "\r\n";	
 	const char *msg_dht22_checksum = "DHT22 checksum error";
 	const char *msg_dht22_noresp = "DHT22 not respond";
-	//uint32_t val = 0;
+	const char *msg_temp_integ = "Temperature integral:";
+	const char *msg_temp_deci = "Temperature decimal:";
+	const char *msg_humi_integ = "Temperature integral:";
+	const char *msg_humi_deci = "Temperature decimal:";
+	
+	
+	uint32_t val = 0;
 
 	DHT22_STATE_t state;
 	DHT22_DATA_t sensor_data;
@@ -55,12 +61,26 @@ int main(void)
 			state = DHT22_CheckStatus(&sensor_data);
         } 
 
-        // Do something with the data.
-        // sensor_data.temperature_integral
-        // sensor_data.temperature_decimal
-        // sensor_data.humidity_integral
-        // sensor_data.humidity_decimal
-		
+        DBG_UartPrintStr(msg_temp_integ);
+		val = sensor_data.temperature_integral;
+        DBG_UartPrintDec(DBG_DecMsgBuff, DBG_DEC_MSG_BUFF_LEN, val);
+        DBG_UartPrintStr(msg_crlf);
+
+        DBG_UartPrintStr(msg_temp_deci);
+		val = sensor_data.temperature_decimal;
+        DBG_UartPrintDec(DBG_DecMsgBuff, DBG_DEC_MSG_BUFF_LEN, val);
+        DBG_UartPrintStr(msg_crlf);
+
+        DBG_UartPrintStr(msg_humi_integ);
+        val = sensor_data.humidity_integral;
+		DBG_UartPrintDec(DBG_DecMsgBuff, DBG_DEC_MSG_BUFF_LEN, val);
+        DBG_UartPrintStr(msg_crlf);
+
+        DBG_UartPrintStr(msg_humi_deci);
+		val = sensor_data.humidity_decimal;
+        DBG_UartPrintDec(DBG_DecMsgBuff, DBG_DEC_MSG_BUFF_LEN, val);
+        DBG_UartPrintStr(msg_crlf);
+
 		_delay_ms(1000);
 	}
 	
