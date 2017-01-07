@@ -5,9 +5,14 @@
  *  Author: arek
  */ 
 
+// What is from ?
+
 
 #ifndef I2C_H_
 #define I2C_H_
+
+// What is from ?
+#if 0
 
 //      This library provides the high-level functions needed to use the I2C
 //	serial interface supported by the hardware of several AVR processors.
@@ -94,7 +99,7 @@ unsigned char i2cMasterSendNI(unsigned char deviceAddr, unsigned char length, un
 //! receive I2C data from a device on the bus (non-interrupt based)
 unsigned char i2cMasterReceiveNI(unsigned char deviceAddr, unsigned char length, unsigned char *data);
 
-
+#endif
 
 
 

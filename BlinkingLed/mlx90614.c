@@ -8,6 +8,8 @@
  *
  */ 
 
+#if 0
+
 #include "mlx90614.h"
 
 /*
@@ -287,3 +289,5 @@ void i2c_receive_pec(void)
 	while (!(TWCR & (1 << TWINT)));
 } 
 
+
+#endif

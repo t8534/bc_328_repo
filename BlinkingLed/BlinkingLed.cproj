@@ -139,6 +139,12 @@
     <Compile Include="mlx90614.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="TWI_Master.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="TWI_Master.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="types.h">
       <SubType>compile</SubType>
     </Compile>

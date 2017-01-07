@@ -24,6 +24,19 @@ Discarded input sections
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
+ .text.TWI_Act_On_Failure_In_Last_Transmission
+                0x00000000       0x22 main.o
+ .text          0x00000000        0x0 mlx90614.o
+ .data          0x00000000        0x0 mlx90614.o
+ .bss           0x00000000        0x0 mlx90614.o
+ .comment       0x00000000       0x31 mlx90614.o
+ .text          0x00000000        0x0 TWI_Master.o
+ .data          0x00000000        0x0 TWI_Master.o
+ .bss           0x00000000        0x0 TWI_Master.o
+ .text.TWI_Get_State_Info
+                0x00000000        0xe TWI_Master.o
+ .text.TWI_Start_Transceiver
+                0x00000000       0x1a TWI_Master.o
  .text          0x00000000        0x0 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_udivmodsi4.o)
  .data          0x00000000        0x0 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_udivmodsi4.o)
  .bss           0x00000000        0x0 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_udivmodsi4.o)
@@ -105,6 +118,8 @@ Address of section .data set to 0x800100
 LOAD C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.1.130/gcc/dev/atmega328p/avr5/crtatmega328p.o
 LOAD dbg.o
 LOAD main.o
+LOAD mlx90614.o
+LOAD TWI_Master.o
 START GROUP
 LOAD c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr5\libm.a
 END GROUP
@@ -212,7 +227,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x228
+.text           0x00000000      0x444
  *(.vectors)
  .vectors       0x00000000       0x68 C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.1.130/gcc/dev/atmega328p/avr5/crtatmega328p.o
                 0x00000000                __vector_default
@@ -273,7 +288,6 @@ END GROUP
  .text          0x000000a2        0x4 C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.1.130/gcc/dev/atmega328p/avr5/crtatmega328p.o
                 0x000000a2                __vector_22
                 0x000000a2                __vector_1
-                0x000000a2                __vector_24
                 0x000000a2                __vector_12
                 0x000000a2                __bad_interrupt
                 0x000000a2                __vector_6
@@ -309,16 +323,31 @@ END GROUP
                 0x000000d6       0x7e dbg.o
                 0x000000d6                DBG_UartPrintDec
  .text.startup.main
-                0x00000154       0x8c main.o
+                0x00000154      0x134 main.o
                 0x00000154                main
+ .text.TWI_Master_Initialise
+                0x00000288       0x14 TWI_Master.o
+                0x00000288                TWI_Master_Initialise
+ .text.TWI_Transceiver_Busy
+                0x0000029c        0x8 TWI_Master.o
+                0x0000029c                TWI_Transceiver_Busy
+ .text.TWI_Start_Transceiver_With_Data
+                0x000002a4       0x44 TWI_Master.o
+                0x000002a4                TWI_Start_Transceiver_With_Data
+ .text.TWI_Get_Data_From_Transceiver
+                0x000002e8       0x2e TWI_Master.o
+                0x000002e8                TWI_Get_Data_From_Transceiver
+ .text.__vector_24
+                0x00000316       0xe6 TWI_Master.o
+                0x00000316                __vector_24
  .text.libgcc.div
-                0x000001e0       0x44 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_udivmodsi4.o)
-                0x000001e0                __udivmodsi4
-                0x00000224                . = ALIGN (0x2)
+                0x000003fc       0x44 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_udivmodsi4.o)
+                0x000003fc                __udivmodsi4
+                0x00000440                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000224        0x0 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_exit.o)
-                0x00000224                _exit
-                0x00000224                exit
+ .fini9         0x00000440        0x0 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_exit.o)
+                0x00000440                _exit
+                0x00000440                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -337,40 +366,49 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000224        0x4 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_exit.o)
+ .fini0         0x00000440        0x4 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000228                _etext = .
+                0x00000444                _etext = .
 
-.data           0x00800100       0x18 load address 0x00000228
+.data           0x00800100       0x9e load address 0x00000444
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
+ .data.TWI_state
+                0x00800100        0x1 TWI_Master.o
  *(.rodata)
  *(.rodata*)
  .rodata.str1.1
-                0x00800100       0x17 main.o
+                0x00800101       0x9d main.o
  *(.gnu.linkonce.d*)
-                0x00800118                . = ALIGN (0x2)
- *fill*         0x00800117        0x1 
-                0x00800118                _edata = .
-                0x00800118                PROVIDE (__data_end, .)
+                0x0080019e                . = ALIGN (0x2)
+                0x0080019e                _edata = .
+                0x0080019e                PROVIDE (__data_end, .)
 
-.bss            0x00800118        0xa
-                0x00800118                PROVIDE (__bss_start, .)
+.bss            0x0080019e       0x11
+                0x0080019e                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
+ .bss.TWI_bufPtr.1553
+                0x0080019e        0x1 TWI_Master.o
+ .bss.TWI_statusReg
+                0x0080019f        0x1 TWI_Master.o
+                0x0080019f                TWI_statusReg
+ .bss.TWI_msgSize
+                0x008001a0        0x1 TWI_Master.o
+ .bss.TWI_buf   0x008001a1        0x4 TWI_Master.o
  *(COMMON)
- COMMON         0x00800118        0xa dbg.o
-                0x00800118                DBG_DecMsgBuff
-                0x00800122                PROVIDE (__bss_end, .)
-                0x00000228                __data_load_start = LOADADDR (.data)
-                0x00000240                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x008001a5        0xa dbg.o
+                0x008001a5                DBG_DecMsgBuff
+                0x008001af                PROVIDE (__bss_end, .)
+                0x00000444                __data_load_start = LOADADDR (.data)
+                0x000004e2                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800122        0x0
+.noinit         0x008001af        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x00800122                _end = .
+                0x008001af                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -415,6 +453,7 @@ END GROUP
  .comment       0x00000000       0x30 dbg.o
                                  0x31 (size before relaxing)
  .comment       0x00000030       0x31 main.o
+ .comment       0x00000030       0x31 TWI_Master.o
 
 .note.gnu.avr.deviceinfo
                 0x00000000       0x40

@@ -38,7 +38,9 @@ SUBDIRS :=
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../dbg.c \
-../main.c
+../main.c \
+../mlx90614.c \
+../TWI_Master.c
 
 
 PREPROCESSING_SRCS += 
@@ -49,19 +51,27 @@ ASM_SRCS +=
 
 OBJS +=  \
 dbg.o \
-main.o
+main.o \
+mlx90614.o \
+TWI_Master.o
 
 OBJS_AS_ARGS +=  \
 dbg.o \
-main.o
+main.o \
+mlx90614.o \
+TWI_Master.o
 
 C_DEPS +=  \
 dbg.d \
-main.d
+main.d \
+mlx90614.d \
+TWI_Master.d
 
 C_DEPS_AS_ARGS +=  \
 dbg.d \
-main.d
+main.d \
+mlx90614.d \
+TWI_Master.d
 
 OUTPUT_FILE_PATH +=BlinkingLed.elf
 
@@ -77,6 +87,10 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
+
+
 
 
 
