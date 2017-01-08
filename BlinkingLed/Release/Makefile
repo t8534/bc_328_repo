@@ -32,13 +32,17 @@ LIB_DEP:=
 LINKER_SCRIPT_DEP:=
 
 # Every subdirectory with source files must be described here
-SUBDIRS := 
+SUBDIRS :=  \
+../user
 
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../dbg.c \
-../main.c
+../Fonts.c \
+../main.c \
+../SSD1306.c \
+../TWI_Master.c
 
 
 PREPROCESSING_SRCS += 
@@ -49,19 +53,31 @@ ASM_SRCS +=
 
 OBJS +=  \
 dbg.o \
-main.o
+Fonts.o \
+main.o \
+SSD1306.o \
+TWI_Master.o
 
 OBJS_AS_ARGS +=  \
 dbg.o \
-main.o
+Fonts.o \
+main.o \
+SSD1306.o \
+TWI_Master.o
 
 C_DEPS +=  \
 dbg.d \
-main.d
+Fonts.d \
+main.d \
+SSD1306.d \
+TWI_Master.d
 
 C_DEPS_AS_ARGS +=  \
 dbg.d \
-main.d
+Fonts.d \
+main.d \
+SSD1306.d \
+TWI_Master.d
 
 OUTPUT_FILE_PATH +=BlinkingLed.elf
 
@@ -77,6 +93,12 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
+
+
+
+
 
 
 
