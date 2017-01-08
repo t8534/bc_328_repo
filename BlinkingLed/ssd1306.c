@@ -445,6 +445,8 @@ void ssd1306_draw_3216char(uint8_t chXpos, uint8_t chYpos, uint8_t chChar)
 	}
 }
 
+// orig
+/*
 void ssd1306_draw_bitmap(uint8_t chXpos, uint8_t chYpos, const uint8_t *pchBmp, uint8_t chWidth, uint8_t chHeight)
 {
 	uint16_t i, j, byteWidth = (chWidth + 7) / 8;
@@ -457,8 +459,22 @@ void ssd1306_draw_bitmap(uint8_t chXpos, uint8_t chYpos, const uint8_t *pchBmp, 
         }
     }
 }
+*/
 
-
+void ssd1306_draw_bitmap(uint8_t chXpos, uint8_t chYpos, const uint8_t *pchBmp, uint8_t chWidth, uint8_t chHeight)
+{
+	uint16_t i, j, byteWidth = (chWidth + 7) / 8;
+	uint16_t idx = 0;
+	
+	for(j = 0; j < chHeight; j ++){
+		for(i = 0; i < chWidth; i ++ ) {
+			idx = (j * byteWidth) + (i / 8);
+			if( pgm_read_byte(&(pchBmp[idx])) & (128 >> (i & 7)) ) {	// atmel
+				ssd1306_draw_point(chXpos + i, chYpos + j, 1);
+			}
+		}
+	}
+}
 
 /**
   * @brief  SSd1306 initialization
