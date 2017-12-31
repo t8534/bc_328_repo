@@ -39,10 +39,10 @@ SUBDIRS :=  \
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../dbg.c \
-../Fonts.c \
 ../main.c \
-../SSD1306.c \
-../TWI_Master.c
+../mcal_gpio.c \
+../mcal_spi.c \
+../sh1106.c
 
 
 PREPROCESSING_SRCS += 
@@ -53,31 +53,31 @@ ASM_SRCS +=
 
 OBJS +=  \
 dbg.o \
-Fonts.o \
 main.o \
-SSD1306.o \
-TWI_Master.o
+mcal_gpio.o \
+mcal_spi.o \
+sh1106.o
 
 OBJS_AS_ARGS +=  \
 dbg.o \
-Fonts.o \
 main.o \
-SSD1306.o \
-TWI_Master.o
+mcal_gpio.o \
+mcal_spi.o \
+sh1106.o
 
 C_DEPS +=  \
 dbg.d \
-Fonts.d \
 main.d \
-SSD1306.d \
-TWI_Master.d
+mcal_gpio.d \
+mcal_spi.d \
+sh1106.d
 
 C_DEPS_AS_ARGS +=  \
 dbg.d \
-Fonts.d \
 main.d \
-SSD1306.d \
-TWI_Master.d
+mcal_gpio.d \
+mcal_spi.d \
+sh1106.d
 
 OUTPUT_FILE_PATH +=BlinkingLed.elf
 
@@ -107,7 +107,7 @@ LINKER_SCRIPT_DEP+=
 ./%.o: .././%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 4.9.2
-	$(QUOTE)C:\Program Files\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DNDEBUG  -I"C:\Program Files\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.1.130\include"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=atmega328p -B "C:\Program Files\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.1.130\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DNDEBUG -DF_CPU=8000000UL  -I"C:\Program Files\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.1.130\include"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=atmega328p -B "C:\Program Files\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.1.130\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
